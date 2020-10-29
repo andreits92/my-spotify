@@ -1,0 +1,5 @@
+header > nav > ul > li {
+    display: inline;
+    padding: 20px;
+    list-style-type: none;
+}
