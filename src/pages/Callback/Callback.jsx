@@ -4,6 +4,11 @@ import queryString from 'query-string';
 
 class Callback extends Component {
     componentDidMount() {
+        // http://localhost:3000/callback#
+            // access_token=3C1TyAi7AIuF8_pII7brN9dN8W2n
+            // &token_type=Bearer
+            // &expires_in=3600
+        debugger;
         // tot ce vine dupa hashtag (#)
         const hash = this.props.location ? this.props.location.hash : '';
         if (hash) {
@@ -20,7 +25,8 @@ class Callback extends Component {
         }
         if (this.props.history) {
             // redirecteaza catre pagina de root
-            this.props.history.push('/');
+            // this.props.history.push('/');
+            window.location.href = 'http://localhost:3000/'
         } 
     }
 

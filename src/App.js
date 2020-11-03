@@ -8,7 +8,24 @@ import Callback from "./pages/Callback/Callback";
 import './App.css';
 
 function App() {
-  return (
+  const publicRoutes = (
+    <div className="App">
+        <Switch>
+            <Route
+                path="/login"
+                component={Login}
+            />
+            {/* Authentication */}
+            <Route
+                path="/callback"
+                component={Callback}
+            />
+            {/* 404 */}
+            <Route component={NotFound} />
+        </Switch>
+    </div>
+  );
+  const authenticatedRoutes = (
     <div className="App">
       <Header />
       <Switch>
@@ -21,25 +38,25 @@ function App() {
             path="/home"
             component={Home}
         />
-        <Route
-            path="/login"
-            component={Login}
-        />
+
         <Route
             path="/contact"
             component={Contact}
-        />
-
-        {/* Authentication */}
-        <Route
-            path="/callback"
-            component={Callback}
         />
         {/* 404 */}
         <Route component={NotFound} />
       </Switch>
     </div>
-  );
+  )
+
+  let displayedRoutes;
+  if (localStorage.getItem('token')) {
+    displayedRoutes = authenticatedRoutes;
+  } else {
+    displayedRoutes = publicRoutes;
+  }
+
+  return <>{displayedRoutes}</>;
 }
 
 export default App;
