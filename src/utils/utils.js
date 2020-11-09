@@ -1,4 +1,5 @@
-function isTokenValid() {
+export function isTokenValid() {
+    debugger;
     const token = localStorage.getItem('token');
     // verificam daca exista tokenul in localStorage
     if (!token) {
@@ -16,7 +17,7 @@ function isTokenValid() {
     const currentTime = new Date().getTime();
 
     // 4. comparam cei 2 timpi
-    if (currentTime < expirationTime) {
+    if (expirationTime < currentTime) {
         return false;
     }
 

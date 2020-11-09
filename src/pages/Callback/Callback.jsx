@@ -15,6 +15,7 @@ class Callback extends Component {
             // parseaza transforma din stringul ala in object js
             const parsedString = queryString.parse(hash);
             // creaza un alt obiect pe baza infomatiilor din hash
+            debugger;
             const token = {
                 token: parsedString.access_token,
                 expiration: new Date().getTime() + parsedString.expires_in * 1000 
@@ -23,11 +24,8 @@ class Callback extends Component {
             // alta parte a aplicatiei cand vrem sa comunicam cu serverul
             localStorage.setItem('token', JSON.stringify(token));
         }
-        if (this.props.history) {
-            // redirecteaza catre pagina de root
-            // this.props.history.push('/');
-            window.location.href = 'http://localhost:3000/'
-        } 
+        // redirecteaza catre pagina home
+        window.location.href = 'http://localhost:3000/home';
     }
 
     render() {

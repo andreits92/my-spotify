@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import {isTokenValid} from '../../utils/utils';
 
 class Login extends Component {
     constructor(props) {
@@ -24,8 +26,12 @@ class Login extends Component {
     }
  
     render() {
+        if (isTokenValid()) {
+            this.props.history.push('/home');
+        }
         return (
             <div>
+                <h1> Login </h1>
                 <h1>Value from state is: {this.state.value}</h1>
                 <input 
                     type="text"
@@ -46,4 +52,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

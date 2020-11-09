@@ -5,12 +5,18 @@ import NotFound from "./pages/NotFound/NotFound";
 import Contact from "./pages/Contact/Contact";
 import Header from "./components/Header/Header";
 import Callback from "./pages/Callback/Callback";
+import {isTokenValid} from './utils/utils' 
 import './App.css';
 
 function App() {
   const publicRoutes = (
     <div className="App">
         <Switch>
+            <Route
+                path="/"
+                exact={true}
+                component={Login}
+            />
             <Route
                 path="/login"
                 component={Login}
@@ -30,9 +36,8 @@ function App() {
       <Header />
       <Switch>
         <Route
-            path="/"
-            exact={true}
-            render={() => (<h1>Base route</h1>)}
+          path="/login"
+          component={Login}
         />
         <Route
             path="/home"
@@ -50,7 +55,7 @@ function App() {
   )
 
   let displayedRoutes;
-  if (localStorage.getItem('token')) {
+  if (isTokenValid()) {
     displayedRoutes = authenticatedRoutes;
   } else {
     displayedRoutes = publicRoutes;
