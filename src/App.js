@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Contact from "./pages/Contact/Contact";
 import Header from "./components/Header/Header";
 import Callback from "./pages/Callback/Callback";
+import Categories from "./pages/Categories/Categories";
 import {isTokenValid} from './utils/utils' 
 import './App.css';
 
@@ -43,16 +44,19 @@ function App() {
             path="/home"
             component={Home}
         />
-
         <Route
             path="/contact"
             component={Contact}
+        />
+        <Route
+            path="/categories"
+            component={Categories}
         />
         {/* 404 */}
         <Route component={NotFound} />
       </Switch>
     </div>
-  )
+  );
 
   let displayedRoutes;
   if (isTokenValid()) {

@@ -1,5 +1,4 @@
 export function isTokenValid() {
-    debugger;
     const token = localStorage.getItem('token');
     // verificam daca exista tokenul in localStorage
     if (!token) {
@@ -9,6 +8,7 @@ export function isTokenValid() {
     // verificam daca acesta nu este expirat
     // 1. transform string in object js
     const parsedToken = JSON.parse(token);
+    console.log(`Bearer ${parsedToken.token}`);
 
     // 2. luam timpul de expirare a tokenului
     const expirationTime = parsedToken.expiration;
@@ -22,4 +22,12 @@ export function isTokenValid() {
     }
 
     return true;
+}
+
+export function getToken() {
+    const tokenRaw = localStorage.getItem('token');
+    const parsedToken = JSON.parse(tokenRaw);
+    const token = parsedToken.token;
+
+    return token;
 }
