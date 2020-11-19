@@ -5,10 +5,18 @@ import {isTokenValid} from '../../utils/utils';
 class Login extends Component {
     constructor(props) {
         super(props);
+
         // initializare
         this.state = {
             value: '',
             other: ''
+        }
+    }
+
+    componentDidMount() {
+        // check and prefill the value
+        if (localStorage.getItem('clientId')) {
+            this.setState({...this.state, value: localStorage.getItem('clientId')})
         }
     }
 
@@ -19,6 +27,8 @@ class Login extends Component {
     }
 
     onClickHandler = () => {
+        localStorage.setItem('clientId', this.state.value);
+
         const encodedClientId = encodeURIComponent(this.state.value)
         const encodedRedirectURI = encodeURIComponent('http://localhost:3000/callback')
         // response_type = token inseamna ca vreau sa fac IMPLICIT FLOW

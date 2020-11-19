@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {getToken} from '../../utils/utils';
+import Category from '../../components/Category/Category';
 
 class Categories extends Component {
     constructor(props) {
@@ -14,11 +15,10 @@ class Categories extends Component {
         const url = 'https://api.spotify.com/v1/browse/categories';
         const token = getToken();
         const config = {
-            method: 'GET', // POST PUT DELETE
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
-            },
-            // body: JSON.stringify({title: 'aa'}) pentru POST
+            }
         };
         fetch(url, config)
             .then(response => response.json())
@@ -29,7 +29,16 @@ class Categories extends Component {
     }
 
     render() {
-        return <h1>Categories {this.state.categories.length}</h1>;
+        const categories = this.state.categories.map(category => {
+            return <Category name={category.name} icon={category.icons[0].url}/>
+        });
+
+        return ( 
+            <div className="categories">
+                <h1>Categories {this.state.categories.length}</h1>
+                {categories}
+            </div>
+        );
     }
 }
 

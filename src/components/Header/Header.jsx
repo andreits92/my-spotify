@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./Header.css";
 
+const onSignoutHandler = () => {
+    localStorage.removeItem('token');
+    window.location = '/login';
+}
+
 const Header = () => {
     return (
         <header className="menu">
@@ -15,6 +20,9 @@ const Header = () => {
                     </li>
                     <li>
                         <Link to="/categories">Categories</Link>
+                    </li>
+                    <li>
+                        <button className="btn btn-default" onClick={onSignoutHandler}>Sign out</button>
                     </li>
                 </ul>
             </nav>
