@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {isTokenValid} from '../../utils/utils';
 
-class Login extends Component {
+class LoginPage extends Component {
     constructor(props) {
         super(props);
 
@@ -62,4 +62,4 @@ class Login extends Component {
     }
 }
 
-export default withRouter(Login);
+export default withRouter(LoginPage);

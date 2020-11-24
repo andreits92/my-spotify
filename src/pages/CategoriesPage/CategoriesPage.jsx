@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {getToken} from '../../utils/utils';
 import Category from '../../components/Category/Category';
 
-class Categories extends Component {
+class CategoriesPage extends Component {
     constructor(props) {
         super(props);
         // initial state
@@ -29,8 +29,9 @@ class Categories extends Component {
     }
 
     render() {
+        console.log(this.state.categories[0])
         const categories = this.state.categories.map(category => {
-            return <Category name={category.name} icon={category.icons[0].url}/>
+            return <Category name={category.name} icon={category.icons[0].url} id={category.id} />
         });
 
         return ( 
@@ -42,4 +43,4 @@ class Categories extends Component {
     }
 }
 
-export default Categories;
+export default CategoriesPage;

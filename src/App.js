@@ -1,11 +1,12 @@
 import { Route, Switch } from 'react-router-dom';
-import Login from "./pages/Login/Login";
-import Home from "./pages/Home/Home";
-import NotFound from "./pages/NotFound/NotFound";
-import Contact from "./pages/Contact/Contact";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import HomePage from "./pages/HomePage/HomePage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import ContactPage from "./pages/ContactPage/ContactPage";
 import Header from "./components/Header/Header";
-import Callback from "./pages/Callback/Callback";
-import Categories from "./pages/Categories/Categories";
+import CallbackPage from "./pages/CallbackPage/CallbackPage";
+import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
+import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import {isTokenValid} from './utils/utils' 
 import './App.css';
 
@@ -16,19 +17,19 @@ function App() {
             <Route
                 path="/"
                 exact={true}
-                component={Login}
+                component={LoginPage}
             />
             <Route
                 path="/login"
-                component={Login}
+                component={LoginPage}
             />
             {/* Authentication */}
             <Route
                 path="/callback"
-                component={Callback}
+                component={CallbackPage}
             />
             {/* 404 */}
-            <Route component={NotFound} />
+            <Route component={NotFoundPage} />
         </Switch>
     </div>
   );
@@ -38,22 +39,27 @@ function App() {
       <Switch>
         <Route
           path="/login"
-          component={Login}
+          component={LoginPage}
         />
         <Route
             path="/home"
-            component={Home}
+            component={HomePage}
         />
         <Route
             path="/contact"
-            component={Contact}
+            component={ContactPage}
         />
         <Route
+            exact
             path="/categories"
-            component={Categories}
+            component={CategoriesPage}
+        />
+        <Route
+            path="/categories/:id"
+            component={CategoryPage}
         />
         {/* 404 */}
-        <Route component={NotFound} />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );

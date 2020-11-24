@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 
-class Callback extends Component {
+class CallbackPage extends Component {
     componentDidMount() {
         // http://localhost:3000/callback#
             // access_token=3C1TyAi7AIuF8_pII7brN9dN8W2n
@@ -33,4 +33,4 @@ class Callback extends Component {
     }
 }
  
-export default withRouter(Callback);
+export default withRouter(CallbackPage);
