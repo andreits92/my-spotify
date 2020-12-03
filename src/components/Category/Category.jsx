@@ -6,7 +6,12 @@ function Category(props) {
     return (
         <div>
             <h1 className="category__title">{props.name}</h1>
-            <Link to={`/categories/${props.id}`}>
+            <Link
+                to={{
+                    pathname: `/categories/${props.id}`,
+                    state: { categoryName: props.name }
+                }}
+            >
                 <img className="category__icon" src={props.icon}/>
             </Link>
         </div>

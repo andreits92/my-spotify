@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import CallbackPage from "./pages/CallbackPage/CallbackPage";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
-import {isTokenValid} from './utils/utils' 
+import {isTokenValid} from './utils/utils';
 import './App.css';
 
 function App() {
