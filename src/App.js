@@ -7,8 +7,10 @@ import Header from "./components/Header/Header";
 import CallbackPage from "./pages/CallbackPage/CallbackPage";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import PlaylistPage from './pages/PlaylistPage/PlaylistPage';
 import {isTokenValid} from './utils/utils';
 import './App.css';
+
 
 function App() {
   const publicRoutes = (
@@ -57,6 +59,10 @@ function App() {
         <Route
             path="/categories/:id"
             component={CategoryPage}
+        />
+        <Route
+            path="/playlists/:id"
+            component={PlaylistPage}
         />
         {/* 404 */}
         <Route component={NotFoundPage} />

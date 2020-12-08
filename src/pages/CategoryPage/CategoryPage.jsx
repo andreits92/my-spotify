@@ -39,7 +39,7 @@ class CategoryPage extends Component {
     }
     render() {
         const playlistsToDisplay = this.state.playlists.map(playlist => {
-           return <Playlist name={playlist.name} imageUrl={playlist.imageUrl} description={playlist.description}/>
+           return <Playlist name={playlist.name} imageUrl={playlist.imageUrl} description={playlist.description} id={playlist.id}/>
         });
         return (
             <div>
