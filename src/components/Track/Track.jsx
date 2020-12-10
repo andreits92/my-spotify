@@ -3,7 +3,8 @@ import './Track.css';
 
 function Track(props) {
     return (
-        <li>
+        // se apeleaza functia (handlerul) din parinte (PlaylistPage)
+        <li onClick={() => { props.pickTrack(props.id); }}>
             <section className="track__wrapper">
                 <section className="track__main">
                     <h3>

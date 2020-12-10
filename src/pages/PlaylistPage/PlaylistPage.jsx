@@ -1,13 +1,15 @@
 import React from 'react';
 import Track from '../../components/Track/Track';
 import {getToken, millisToMinutesAndSeconds} from '../../utils/utils';
+import './PlaylistPage.css';
 
 class PlaylistPage extends React.Component {
     constructor(props) {
         super(props);
-
+        // initial state
         this.state = {
-            tracks: []
+            tracks: [],
+            selectedTrackId: null
         }
     }
 
@@ -22,22 +24,25 @@ class PlaylistPage extends React.Component {
             }
         };
         fetch(url, config)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.items)
-            const simplifiedTracks = data.items.map(item => {
-                return {
-                    id: item.track.id,
-                    name: item.track.name,
-                    artists: item.track.artists.map(artist => {
-                        return artist.name;
-                    }),
-                    duration: millisToMinutesAndSeconds(item.track.duration_ms)
-                };
-            });
-            this.setState({...this.state, tracks: simplifiedTracks})
-        })
-        .catch(err => console.log('err'));
+            .then(response => response.json())
+            .then(data => {
+                const simplifiedTracks = data.items.map(item => {
+                    return {
+                        id: item.track.id,
+                        name: item.track.name,
+                        artists: item.track.artists.map(artist => {
+                            return artist.name;
+                        }),
+                        duration: millisToMinutesAndSeconds(item.track.duration_ms)
+                    };
+                });
+                this.setState({...this.state, tracks: simplifiedTracks})
+            })
+            .catch(err => console.log('err'));
+    }
+
+    onPickTrackHandler = (id) => {
+        console.log('aici: ', id);
     }
 
     render() {
@@ -58,11 +63,21 @@ class PlaylistPage extends React.Component {
                                         name={track.name}
                                         artists={track.artists}
                                         duration={track.duration}
+                                        pickTrack={this.onPickTrackHandler}
                                     />
                                 )
                             })
                         }
                         </ul>
+                    </section>
+                    <section>
+                        {
+                            // ternary operator (ca un if)
+                            this.state.selectedTrackId ?
+                                <iframe src={`https://open.spotify.com/embed/track/${this.state.selectedTrackId}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> // caz de true
+                                :
+                                null // caz de false
+                        }
                     </section>
                 </section>
             </div>

@@ -1,7 +1,6 @@
 .tracks__wrapper {
     padding-left: 0;
     list-style: none;
-
     height: 100%;
     overflow-y: auto;
 }
