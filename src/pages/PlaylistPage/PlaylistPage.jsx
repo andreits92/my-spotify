@@ -1,5 +1,6 @@
 import React from 'react';
 import Track from '../../components/Track/Track';
+import Player from '../../components/Player/Player';
 import {getToken, millisToMinutesAndSeconds} from '../../utils/utils';
 import './PlaylistPage.css';
 
@@ -42,10 +43,15 @@ class PlaylistPage extends React.Component {
     }
 
     onPickTrackHandler = (id) => {
-        console.log('aici: ', id);
+        this.setState({...this.state, selectedTrackId: id});
     }
 
     render() {
+        let player = null;
+        if (this.state.selectedTrackId) {
+            player = <Player trackId={this.state.selectedTrackId}/>;
+        }
+
         return (
             <div>
                 <h1>
@@ -57,27 +63,23 @@ class PlaylistPage extends React.Component {
                         { 
                             this.state.tracks.map((track, index) => {
                                 return (
-                                    <Track
-                                        key={`Track${track.id}${index}`}
-                                        id={track.id}
-                                        name={track.name}
-                                        artists={track.artists}
-                                        duration={track.duration}
-                                        pickTrack={this.onPickTrackHandler}
-                                    />
+                                    <div onClick={() => this.onPickTrackHandler(track.id)}>
+                                        <Track
+                                            key={`Track${track.id}${index}`}
+                                            id={track.id}
+                                            name={track.name}
+                                            artists={track.artists}
+                                            duration={track.duration}
+                                            isTrackSelected={track.id === this.state.selectedTrackId}
+                                        />
+                                   </div> 
                                 )
                             })
                         }
                         </ul>
                     </section>
                     <section>
-                        {
-                            // ternary operator (ca un if)
-                            this.state.selectedTrackId ?
-                                <iframe src={`https://open.spotify.com/embed/track/${this.state.selectedTrackId}`} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> // caz de true
-                                :
-                                null // caz de false
-                        }
+                        {player}
                     </section>
                 </section>
             </div>

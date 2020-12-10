@@ -2,10 +2,11 @@ import React from 'react';
 import './Track.css';
 
 function Track(props) {
+    const trackClasses = "track__wrapper" + (props.isTrackSelected ? ' track__wrapper--selected' : '');
+
     return (
-        // se apeleaza functia (handlerul) din parinte (PlaylistPage)
-        <li onClick={() => { props.pickTrack(props.id); }}>
-            <section className="track__wrapper">
+        <li>
+            <section className={trackClasses}>
                 <section className="track__main">
                     <h3>
                         {props.name}

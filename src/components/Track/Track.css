@@ -25,9 +25,9 @@
     font-weight: bold;
 }
 
-/* .track__wrapper--selected .track__main h3 {
+.track__wrapper--selected .track__main h3 {
     color: white
-} */
+}
 
 .track__wrapper--selected .artist,
 .track__wrapper--selected .track__duration {
